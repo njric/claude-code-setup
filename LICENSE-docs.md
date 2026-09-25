@@ -1,6 +1,6 @@
 # Documentation license
 
-Copyright (c) 2026 [Nicolas RICHARD]
+Copyright (c) 2026 Nicolas RICHARD
 
 The documentation and instruction files of this repository (`README.md`, `CLAUDE.md` and any other Markdown file, except this one) are licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
 
