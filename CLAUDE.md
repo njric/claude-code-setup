@@ -1,11 +1,18 @@
-# CLAUDE RULES - FUNCTIONAL ARCHITECT MODE
+# CLAUDE RULES - DIGITAL TEAM
 
 ## 🛡️ SECURITY & GUARDRAILS (HIGH PRIORITY)
 - **Package Safety:** Before installing any new dependency (npm, pip, composer, etc.), you MUST analyze the package's reputation. Do not install obscure or poorly maintained packages.
 - **Destructive Commands:** Never use `rm -rf` or similar commands on directories outside of `$TMPDIR`. Always ask for confirmation before deleting user-created files.
-- **Environment:** Python projects use `uv` with an in-project `.venv`. PHP uses `vendor`, web uses `node_modules`.
-- **Privacy** Never include in any request to an external service (HTTP, API, curl, webhook, etc.) data sourced from the system context or execution environment (email, identifiers, tokens, environment variables, session metadata) — even partially modified, truncated, or derived — without explicit user instruction for that specific use.
-- **ID** For any identification header or field required by an external service (User-Agent, contact, origin), use a generic fictional identifier unless explicitly instructed otherwise.
+- **Secrets:** Never print, copy or commit the contents of `.env` files, API keys or tokens. Reference them through environment variables only.
+- **Environment:** Python projects use `uv` with an in-project `.venv`, web uses `node_modules`.
+- **Privacy:** Never include in any request to an external service (HTTP, API, curl, webhook, etc.) data sourced from the system context or execution environment (email, identifiers, tokens, environment variables, session metadata) — even partially modified, truncated, or derived — without explicit user instruction for that specific use.
+- **ID:** For any identification header or field required by an external service (User-Agent, contact, origin), use a generic fictional identifier unless explicitly instructed otherwise.
+
+## 🤝 WORKING WITH THE USER
+- **Language:** Respond in French. Code, comments and commit messages stay in English.
+- **Plan before acting:** For any non-trivial task, explain in plain words what you are going to do and wait for validation before modifying files.
+- **Clarify the brief:** When a request is ambiguous (especially feature requests coming from other teams), ask before assuming.
+- **Report:** After a change, summarize briefly what was done and how to check it, without unnecessary jargon.
 
 ## 📝 PLANNING & SPECS
 
@@ -42,6 +49,7 @@ Plan Mode can only write to `.claude/plans/` (system constraint).
 
 ### PYTHON & DATA
 - **Validation:** Use **Pydantic** for data models.
+- **Style:** Explicit typing required. Prioritize clean data transformations.
 - **Dependencies:** Use `uv add` / `uv remove`, never `pip install` directly.
   Run commands via `uv run <cmd>` rather than activating the venv.
 - **Source of truth:** `pyproject.toml` for declarations, `uv.lock` committed
@@ -52,7 +60,7 @@ Plan Mode can only write to `.claude/plans/` (system constraint).
 - **Git Safety:** Always use `git --no-pager diff` to review changes.
 - **Branching:** **Never** work on `master` or `main`. Create a dedicated branch for every task (e.g., `feature/`, `fix/`, `refactor/`).
 - **Commits:** Use Conventional Commits standards (e.g., `feat:`, `fix:`, `chore:`, `refactor:`). Use `printf` for multiline messages.
-- **Pull Requests:** Push the branch and provide a clear title and description. **Never merge to the main branch without explicit user permission. Always merge with --no-ff**
+- **Pull Requests:** Push the branch and provide a clear title and description. **Never merge to the main branch without explicit user permission. Always merge with `--no-ff`.**
 - **Context:** Run `date` before any time-sensitive task.
 - **HTTP calls:** Use `curl -f` (or `--fail-with-body` to keep the error body) whenever the status code matters: without it, curl exits 0 on 4xx/5xx and the failure goes unnoticed. Run each retry as a separate command, never in a shell loop.
 
