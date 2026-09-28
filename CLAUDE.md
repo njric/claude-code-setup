@@ -54,7 +54,7 @@ Plan Mode can only write to `.claude/plans/` (system constraint).
 - **Commits:** Use Conventional Commits standards (e.g., `feat:`, `fix:`, `chore:`, `refactor:`). Use `printf` for multiline messages.
 - **Pull Requests:** Push the branch and provide a clear title and description. **Never merge to the main branch without explicit user permission. Always merge with --no-ff**
 - **Context:** Run `date` before any time-sensitive task.
-- - **HTTP calls:** Use `curl -f` (or `--fail-with-body` to keep the error body) whenever the status code matters: without it, curl exits 0 on 4xx/5xx and the failure goes unnoticed. Run each retry as a separate command, never in a shell loop.
+- **HTTP calls:** Use `curl -f` (or `--fail-with-body` to keep the error body) whenever the status code matters: without it, curl exits 0 on 4xx/5xx and the failure goes unnoticed. Run each retry as a separate command, never in a shell loop.
 
 ## 🔒 SANDBOX
 - On a permission error, report the blocked path or domain instead of
