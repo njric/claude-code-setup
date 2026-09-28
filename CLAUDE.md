@@ -23,10 +23,10 @@ state of ongoing work. Update these files at each of the following triggers:
 - On user request
 
 ### Plan Mode constraint
-Plan Mode can only write to `.claude-pro/plans/` (system constraint).
+Plan Mode can only write to `.claude/plans/` (system constraint).
 - **Before planning**: read `specs/*.md` and `plans/*.md` to get current project state.
 - **First action upon entering execution mode**: copy finalized plan from
-  `.claude-pro/plans/<feature>.md` to `plans/<feature-name>.md`.
+  `.claude/plans/<feature>.md` to `plans/<feature-name>.md`.
 
 
 ## 🎨 CODE STYLE & FRAMEWORKS
